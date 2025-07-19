@@ -17,7 +17,7 @@ class Profile(models.Model):
         if image.mode not in ("L", "RGB"):
             image = image.convert("RGB")
 
-        imagefit = ImageOps.fit(image, (200, 200), Image.ANTIALIAS)
+        imagefit = ImageOps.fit(image, (200, 200), Image.Resampling.LANCZOS)
         imagefit.save(self.image.path)
 
     def __str__(self):
